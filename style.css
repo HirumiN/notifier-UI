@@ -83,6 +83,7 @@ button.danger{background:var(--danger)}
 }
 .status-done { background:#ecfdf5;color:#065f46;border-color:#bbf7d0; }
 .status-pending { background:#fff7ed;color:#92400e;border-color:#ffd8a8; }
+.status-expired { background:#fef2f2;color:#991b1b;border-color:#fca5a5; }
 
 .small { font-size:0.85rem;color:var(--muted) }
 

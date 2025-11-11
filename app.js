@@ -28,8 +28,14 @@ function renderList() {
     listDiv.innerHTML = '<p class="small">Belum ada deadline.</p>';
     return;
   }
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   deadlineKeys.forEach(key => {
     const deadline = deadlines[key];
+    const deadlineDate = new Date(deadline.date);
+    const isExpired = !deadline.done && deadlineDate < today;
+    const status = deadline.done ? 'done' : (isExpired ? 'expired' : 'pending');
+    const statusText = deadline.done ? 'Selesai' : (isExpired ? 'Expired' : 'Pending');
     const item = document.createElement('div');
     item.className = 'card-item';
     item.innerHTML = `
@@ -41,7 +47,7 @@ function renderList() {
         </div>
       </div>
       <div>
-        <span class="status-badge status-${deadline.done ? 'done' : 'pending'}">${deadline.done ? 'Selesai' : 'Pending'}</span>
+        <span class="status-badge status-${status}">${statusText}</span>
         <button class="btn-group" onclick="editDeadline('${key}')">Edit</button>
         <button class="btn-group danger" onclick="deleteDeadline('${key}')">Hapus</button>
       </div>
