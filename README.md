@@ -22,7 +22,7 @@ Aplikasi web sederhana untuk mengelola deadline tugas atau event dengan integras
 
 1. **Clone Repository**:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/HirumiN/notifier-UI
    cd notifier-UI
    ```
 
