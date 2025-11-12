@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Deadline Manager</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <div class="container">
@@ -18,38 +22,49 @@
       <main>
         <section class="form-card">
           <h2 id="form-title">Tambah Deadline</h2>
-        <div class="row">
-          <input id="title" type="text" placeholder="Judul tugas / event" />
-          <input id="date" type="date" />
-        </div>
+          <div class="row">
+            <input id="title" type="text" placeholder="Judul tugas / event" />
+            <input id="date" type="date" />
+          </div>
+
+          <div class="row alarm-row">
+            <label for="alarm-datetime">Tambah Alarm</label>
+            <input type="datetime-local" id="alarm-datetime" />
+            <button type="button" id="add-alarm-btn">Tambah Alarm</button>
+          </div>
+<div class="alarm-section">
+  <h3 class="alarm-title">Daftar Alarm</h3>
+  <ul id="alarm-list"></ul>
+</div>
+
           <div class="row actions">
             <button id="save-btn">Simpan</button>
             <button id="cancel-btn" class="muted">Batal</button>
           </div>
         </section>
 
-      <section class="list-card">
-        <h2>Daftar Deadline</h2>
-        <div class="filter-sort-container">
-          <div class="filter-container">
-            <label for="filter-select">Filter Status:</label>
-            <select id="filter-select">
-              <option value="all">Semua</option>
-              <option value="pending">Pending</option>
-              <option value="expired">Expired</option>
-              <option value="done">Selesai</option>
-            </select>
+        <section class="list-card">
+          <h2>Daftar Deadline</h2>
+          <div class="filter-sort-container">
+            <div class="filter-container">
+              <label for="filter-select">Filter Status:</label>
+              <select id="filter-select">
+                <option value="all">Semua</option>
+                <option value="pending">Pending</option>
+                <option value="expired">Expired</option>
+                <option value="done">Selesai</option>
+              </select>
+            </div>
+            <div class="sort-container">
+              <label for="sort-select">Urutkan:</label>
+              <select id="sort-select">
+                <option value="date-asc">Tanggal Terdekat</option>
+                <option value="date-desc">Tanggal Terjauh</option>
+              </select>
+            </div>
           </div>
-          <div class="sort-container">
-            <label for="sort-select">Urutkan:</label>
-            <select id="sort-select">
-              <option value="date-asc">Tanggal Terdekat</option>
-              <option value="date-desc">Tanggal Terjauh</option>
-            </select>
-          </div>
-        </div>
-        <div id="list"></div>
-      </section>
+          <div id="list"></div>
+        </section>
       </main>
 
       <footer>

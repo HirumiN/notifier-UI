@@ -52,6 +52,35 @@ button{
   font-weight:600;cursor:pointer;
   transition: background-color 0.2s ease, transform 0.1s ease;
 }
+.row.alarm-row {
+  display: flex;
+  align-items: center; /* biar sejajar vertikal */
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.row.alarm-row label {
+  font-weight: 700;        /* tebal */
+  color: #111827;          /* warna teks hitam (sama kayak body) */
+  display: flex;
+  align-items: center;     /* tengah vertikal */
+  justify-content: center; /* opsional, biar rata tengah horizontal */
+  min-width: 120px;        /* kasih lebar agar posisi rapi */
+}
+input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: green; /* pakai warna utama biru */
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+input[type="checkbox"]:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 4px rgba(37, 99, 235, 0.4);
+}
+
+
 button:hover {
   background-color: #1d4ed8;
   transform: translateY(-1px);
@@ -96,4 +125,96 @@ footer{margin-top:16px;text-align:center;color:var(--muted);font-size:0.85rem}
 /* responsive */
 @media (max-width:800px){
   .container{margin:14px auto;padding:8px}
+}
+/* Bagian daftar alarm */
+.alarm-section {
+  margin-top: 10px;
+}
+
+.alarm-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.alarm-title::before {
+  content: "\f017"; /* ikon jam dari Font Awesome */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: #2563eb;
+}
+
+#alarm-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Item alarm */
+.alarm-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 12px;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.alarm-item:hover {
+  background: #f1f5f9;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* Info alarm */
+.alarm-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alarm-icon {
+  color: #2563eb;
+  font-size: 1rem;
+}
+
+.alarm-time {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Tombol aksi alarm */
+.alarm-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-icon {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+  font-size: 0.95rem;
+}
+
+.btn-icon:hover {
+  background: #e5e7eb;
+}
+
+.btn-icon.edit i {
+  color: #2563eb; /* biru */
+}
+
+.btn-icon.delete i {
+  color: #dc2626; /* merah */
 }
