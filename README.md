@@ -9,6 +9,7 @@ Aplikasi web sederhana untuk mengelola deadline tugas atau event dengan integras
 - **Hapus Deadline**: Hapus deadline yang tidak diperlukan.
 - **Tandai Selesai**: Centang checkbox untuk menandai deadline selesai.
 - **Status Otomatis**: Status "Expired" untuk deadline yang melewati batas waktu tapi belum selesai.
+- **Alarm**: Set alarm untuk deadline dengan waktu spesifik, dapat ditambah, diedit, atau dihapus.
 - **Realtime Sync**: Data tersimpan dan disinkronkan secara real-time dengan Firebase.
 
 ## Teknologi
@@ -58,12 +59,18 @@ Data disimpan di path `/deadlines` dengan struktur objek:
   "dl1": {
     "title": "Tugas Akhir",
     "date": "2025-12-15",
-    "done": false
+    "done": false,
+    "alarms": {
+      "alarm1": {
+        "datetime": "2025-12-14T10:00"
+      }
+    }
   },
   "dl2": {
     "title": "Presentasi",
     "date": "2025-12-20",
-    "done": true
+    "done": true,
+    "alarms": {}
   }
 }
 ```
