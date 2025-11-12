@@ -37,6 +37,10 @@ main{display:flex;flex-direction:column;gap:16px}
 }
 
 .form-card h2, .list-card h2{margin-top:0;font-size:1.05rem}
+.filter-sort-container { margin-bottom: 12px; display: flex; gap: 16px; flex-wrap: wrap; }
+.filter-container, .sort-container { display: flex; align-items: center; gap: 8px; }
+.filter-container label, .sort-container label { font-size: 0.9rem; color: var(--muted); }
+.filter-container select, .sort-container select { padding: 6px 8px; border: 1px solid #e6e9ef; border-radius: 6px; font-size: 0.9rem; }
 .row{display:flex;gap:8px;margin:8px 0}
 .row input[type="text"], .row input[type="datetime-local"]{
   flex:1;padding:10px;border:1px solid #e6e9ef;border-radius:8px;

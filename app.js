@@ -16,6 +16,8 @@ const saveBtn = document.getElementById('save-btn');
 const cancelBtn = document.getElementById('cancel-btn');
 const listDiv = document.getElementById('list');
 const formTitle = document.getElementById('form-title');
+const sortSelect = document.getElementById('sort-select');
+const filterSelect = document.getElementById('filter-select');
 
 // Current editing ID
 let editingId = null;
@@ -30,7 +32,30 @@ function renderList() {
   }
   const now = new Date();
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  deadlineKeys.forEach(key => {
+  const sortValue = sortSelect.value;
+  const filterValue = filterSelect.value;
+
+  // Filter deadlines based on status
+  let filteredKeys = deadlineKeys.filter(key => {
+    const deadline = deadlines[key];
+    const deadlineDate = new Date(deadline.date);
+    const isExpired = !deadline.done && deadlineDate < today;
+    const status = deadline.done ? 'done' : (isExpired ? 'expired' : 'pending');
+    return filterValue === 'all' || status === filterValue;
+  });
+
+  // Sort filtered deadlines
+  let sortedKeys = [...filteredKeys];
+
+  if (sortValue === 'date-asc') {
+    // Sort by date ascending (closest first)
+    sortedKeys.sort((a, b) => new Date(deadlines[a].date) - new Date(deadlines[b].date));
+  } else if (sortValue === 'date-desc') {
+    // Sort by date descending (farthest first)
+    sortedKeys.sort((a, b) => new Date(deadlines[b].date) - new Date(deadlines[a].date));
+  }
+
+  sortedKeys.forEach(key => {
     const deadline = deadlines[key];
     const deadlineDate = new Date(deadline.date);
     const isExpired = !deadline.done && deadlineDate < today;
@@ -132,6 +157,8 @@ onValue(deadlinesRef, (snapshot) => {
 // Event listeners
 saveBtn.addEventListener('click', saveDeadline);
 cancelBtn.addEventListener('click', cancelEdit);
+sortSelect.addEventListener('change', renderList);
+filterSelect.addEventListener('change', renderList);
 
 // Make functions global for onclick
 window.editDeadline = editDeadline;

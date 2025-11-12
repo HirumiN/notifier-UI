@@ -28,10 +28,28 @@
           </div>
         </section>
 
-        <section class="list-card">
-          <h2>Daftar Deadline</h2>
-          <div id="list"></div>
-        </section>
+      <section class="list-card">
+        <h2>Daftar Deadline</h2>
+        <div class="filter-sort-container">
+          <div class="filter-container">
+            <label for="filter-select">Filter Status:</label>
+            <select id="filter-select">
+              <option value="all">Semua</option>
+              <option value="pending">Pending</option>
+              <option value="expired">Expired</option>
+              <option value="done">Selesai</option>
+            </select>
+          </div>
+          <div class="sort-container">
+            <label for="sort-select">Urutkan:</label>
+            <select id="sort-select">
+              <option value="date-asc">Tanggal Terdekat</option>
+              <option value="date-desc">Tanggal Terjauh</option>
+            </select>
+          </div>
+        </div>
+        <div id="list"></div>
+      </section>
       </main>
 
       <footer>
